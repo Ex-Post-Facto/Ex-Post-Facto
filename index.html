@@ -1,0 +1,1301 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8"><meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="description"
+    content="ExPostFacto — Information Security, Software Development, Security Research and Open Source."
+>
+
+<title>ExPostFacto // Operator Profile</title>
+
+<style>
+    :root {
+        --bg: #05070a;
+        --bg-secondary: #080c11;
+        --panel: rgba(8, 14, 20, 0.92);
+        --panel-hover: rgba(10, 19, 27, 0.96);
+
+        --cyan: #00f6ff;
+        --cyan-dim: #00aeb5;
+        --blue: #1677ff;
+
+        --green: #00ff88;
+        --green-dim: #00a85a;
+
+        --red: #ff3158;
+
+        --text: #d7e4e8;
+        --text-dim: #81939a;
+
+        --border: rgba(0, 246, 255, 0.28);
+        --border-bright: rgba(0, 246, 255, 0.75);
+
+        --shadow:
+            0 0 15px rgba(0, 246, 255, 0.08),
+            inset 0 0 20px rgba(0, 246, 255, 0.025);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        background:
+            linear-gradient(
+                rgba(0, 246, 255, 0.025) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(0, 246, 255, 0.025) 1px,
+                transparent 1px
+            ),
+            radial-gradient(
+                circle at top,
+                #0a151d 0%,
+                var(--bg) 45%,
+                #020304 100%
+            );
+
+        background-size: 42px 42px, 42px 42px, auto;
+
+        color: var(--text);
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
+
+        line-height: 1.7;
+        min-height: 100vh;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+
+        pointer-events: none;
+
+        background:
+            repeating-linear-gradient(
+                0deg,
+                rgba(255, 255, 255, 0.015) 0px,
+                rgba(255, 255, 255, 0.015) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+
+        opacity: 0.25;
+        z-index: 999;
+    }
+
+    ::selection {
+        background: var(--cyan);
+        color: #001014;
+    }
+
+    a {
+        color: var(--cyan);
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: white;
+        text-shadow:
+            0 0 5px var(--cyan),
+            0 0 15px var(--cyan);
+    }
+
+    .container {
+        width: min(1100px, calc(100% - 32px));
+        margin: auto;
+    }
+
+    /* =========================================
+       HEADER
+       ========================================= */
+
+    header {
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+        overflow: hidden;
+    }
+
+    header::after {
+        content: "";
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        height: 2px;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                var(--cyan),
+                var(--blue),
+                var(--cyan),
+                transparent
+            );
+
+        box-shadow:
+            0 0 10px var(--cyan),
+            0 0 30px var(--cyan);
+    }
+
+    .hero {
+        width: 100%;
+        padding: 60px 0;
+    }
+
+    .terminal-label {
+        color: var(--green);
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+
+        text-shadow:
+            0 0 5px var(--green),
+            0 0 15px rgba(0, 255, 136, 0.5);
+    }
+
+    .terminal-label::before {
+        content: "[+] ";
+    }
+
+    h1 {
+        margin: 0;
+
+        font-size:
+            clamp(3rem, 10vw, 7rem);
+
+        line-height: 0.95;
+
+        color: white;
+
+        text-transform: uppercase;
+
+        letter-spacing: -3px;
+
+        text-shadow:
+            0 0 5px var(--cyan),
+            0 0 20px rgba(0, 246, 255, 0.5),
+            4px 4px 0 rgba(0, 119, 255, 0.25);
+    }
+
+    .hero-subtitle {
+        color: var(--cyan);
+        font-size: clamp(1rem, 2vw, 1.35rem);
+
+        margin-top: 25px;
+
+        max-width: 750px;
+    }
+
+    .hero-subtitle::before {
+        content: "> ";
+        color: var(--green);
+    }
+
+    .signature-line {
+        margin-top: 45px;
+
+        display: inline-block;
+
+        border: 1px solid var(--border);
+        background: rgba(0, 10, 15, 0.7);
+
+        padding: 14px 20px;
+
+        color: var(--text-dim);
+
+        box-shadow: var(--shadow);
+    }
+
+    .cursor {
+        display: inline-block;
+
+        width: 8px;
+        height: 1em;
+
+        background: var(--cyan);
+
+        margin-left: 5px;
+
+        vertical-align: -2px;
+
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    /* =========================================
+       NAV
+       ========================================= */
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+
+        background:
+            rgba(3, 7, 10, 0.92);
+
+        backdrop-filter: blur(10px);
+
+        border-bottom:
+            1px solid var(--border);
+
+        box-shadow:
+            0 5px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-inner {
+        min-height: 55px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 20px;
+    }
+
+    .nav-logo {
+        color: var(--green);
+        font-weight: bold;
+    }
+
+    .nav-logo::before {
+        content: "root@expostfacto:~$ ";
+        color: var(--text-dim);
+        font-weight: normal;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-links a {
+        color: var(--text-dim);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+        color: var(--cyan);
+    }
+
+    /* =========================================
+       MAIN
+       ========================================= */
+
+    main {
+        padding: 80px 0;
+    }
+
+    section {
+        margin-bottom: 80px;
+        scroll-margin-top: 80px;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        margin-bottom: 25px;
+    }
+
+    .section-number {
+        color: var(--green);
+        font-size: 0.8rem;
+    }
+
+    h2 {
+        margin: 0;
+
+        color: white;
+
+        font-size: 1.5rem;
+
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    h2::before {
+        content: "// ";
+        color: var(--cyan);
+    }
+
+    .section-header::after {
+        content: "";
+
+        flex: 1;
+
+        height: 1px;
+
+        background:
+            linear-gradient(
+                90deg,
+                var(--border-bright),
+                transparent
+            );
+    }
+
+    .panel {
+        border: 1px solid var(--border);
+
+        background: var(--panel);
+
+        padding: 30px;
+
+        box-shadow: var(--shadow);
+
+        position: relative;
+    }
+
+    .panel::before {
+        content: "";
+
+        position: absolute;
+
+        top: -1px;
+        left: 20px;
+
+        width: 80px;
+        height: 2px;
+
+        background: var(--cyan);
+
+        box-shadow:
+            0 0 10px var(--cyan);
+    }
+
+    .panel:hover {
+        background: var(--panel-hover);
+
+        border-color:
+            var(--border-bright);
+    }
+
+    .panel p {
+        color: #b9c9ce;
+    }
+
+    /* =========================================
+       LISTS
+       ========================================= */
+
+    ol,
+    ul {
+        padding-left: 25px;
+    }
+
+    li {
+        margin-bottom: 12px;
+        color: #b9c9ce;
+    }
+
+    li::marker {
+        color: var(--cyan);
+    }
+
+    strong {
+        color: white;
+    }
+
+    em {
+        color: var(--cyan);
+    }
+
+    /* =========================================
+       SKILLS
+       ========================================= */
+
+    .skill-group {
+        margin-bottom: 30px;
+    }
+
+    .skill-title {
+        color: var(--green);
+
+        text-transform: uppercase;
+
+        font-size: 0.85rem;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 12px;
+    }
+
+    .skill-title::before {
+        content: "[";
+        color: var(--cyan);
+    }
+
+    .skill-title::after {
+        content: "]";
+        color: var(--cyan);
+    }
+
+    .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+        list-style: none;
+
+        padding: 0;
+        margin: 0;
+    }
+
+    .skill-list li {
+        margin: 0;
+
+        padding: 7px 12px;
+
+        border:
+            1px solid rgba(0, 246, 255, 0.25);
+
+        background:
+            rgba(0, 246, 255, 0.035);
+
+        color: var(--cyan);
+
+        font-size: 0.8rem;
+    }
+
+    .skill-list li:hover {
+        border-color: var(--cyan);
+
+        box-shadow:
+            0 0 12px rgba(0, 246, 255, 0.2);
+    }
+
+    /* =========================================
+       PROJECTS
+       ========================================= */
+
+    .projects {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                auto-fit,
+                minmax(240px, 1fr)
+            );
+
+        gap: 15px;
+
+        list-style: none;
+
+        padding: 0;
+    }
+
+    .projects li {
+        margin: 0;
+
+        border:
+            1px solid var(--border);
+
+        padding: 20px;
+
+        background:
+            rgba(0, 246, 255, 0.025);
+
+        min-height: 120px;
+    }
+
+    .projects li::before {
+        content: "0x";
+        color: var(--green);
+
+        margin-right: 8px;
+    }
+
+    /* =========================================
+       CONTACT
+       ========================================= */
+
+    .contact {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 20px;
+
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .email {
+        color: var(--cyan);
+
+        font-size:
+            clamp(0.85rem, 2vw, 1.1rem);
+
+        word-break: break-all;
+    }
+
+    .warning {
+        color: var(--red);
+
+        border-left:
+            2px solid var(--red);
+
+        padding-left: 15px;
+    }
+
+    /* =========================================
+       PGP
+       ========================================= */
+
+    .pgp-container {
+        margin-top: 35px;
+    }
+
+    .pgp-button {
+        width: 100%;
+
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+
+        cursor: pointer;
+
+        border:
+            1px solid var(--cyan);
+
+        background:
+            rgba(0, 246, 255, 0.04);
+
+        color: var(--cyan);
+
+        padding: 17px 20px;
+
+        font-family: inherit;
+
+        font-size: 0.9rem;
+
+        text-align: left;
+
+        transition:
+            background 0.2s,
+            box-shadow 0.2s;
+    }
+
+    .pgp-button:hover {
+        background:
+            rgba(0, 246, 255, 0.1);
+
+        box-shadow:
+            0 0 20px rgba(0, 246, 255, 0.15);
+    }
+
+    .pgp-button::before {
+        content: "[PGP] ";
+        color: var(--green);
+    }
+
+    .pgp-arrow {
+        transition: transform 0.25s;
+    }
+
+    .pgp-button.active .pgp-arrow {
+        transform: rotate(180deg);
+    }
+
+    .pgp-key {
+        max-height: 0;
+
+        overflow: hidden;
+
+        opacity: 0;
+
+        transition:
+            max-height 0.5s ease,
+            opacity 0.3s ease;
+    }
+
+    .pgp-key.open {
+        max-height: 1500px;
+
+        opacity: 1;
+    }
+
+    .pgp-key pre {
+        margin: 0;
+
+        padding: 25px;
+
+        overflow-x: auto;
+
+        background:
+            #020506;
+
+        border:
+            1px solid var(--border);
+
+        border-top: none;
+
+        color: #9eeeff;
+
+        font-size: 0.75rem;
+
+        line-height: 1.45;
+
+        text-shadow:
+            0 0 4px rgba(0, 246, 255, 0.3);
+    }
+
+    /* =========================================
+       ASCII SIGNATURE
+       ========================================= */
+
+    .ascii {
+        overflow-x: auto;
+
+        color: var(--green);
+
+        font-size: 0.7rem;
+
+        line-height: 1.1;
+
+        text-shadow:
+            0 0 5px var(--green);
+
+        padding: 20px;
+
+        background:
+            #020403;
+
+        border:
+            1px solid
+            rgba(0, 255, 136, 0.2);
+    }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+
+    footer {
+        border-top:
+            1px solid var(--border);
+
+        padding: 40px 0;
+
+        color: var(--text-dim);
+
+        text-align: center;
+
+        font-size: 0.75rem;
+    }
+
+    footer span {
+        color: var(--green);
+    }
+
+    /* =========================================
+       RESPONSIVE
+       ========================================= */
+
+    @media (max-width: 700px) {
+
+        .container {
+            width:
+                min(
+                    100% - 22px,
+                    1100px
+                );
+        }
+
+        .nav-logo {
+            display: none;
+        }
+
+        .nav-inner {
+            justify-content: center;
+        }
+
+        .nav-links {
+            gap: 15px;
+        }
+
+        .nav-links a {
+            font-size: 0.7rem;
+        }
+
+        .panel {
+            padding: 20px;
+        }
+
+        h1 {
+            letter-spacing: -2px;
+        }
+
+        main {
+            padding-top: 50px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+    }
+</style>
+
+</head><body><header id="top"><div class="container hero">
+
+    <div class="terminal-label">
+        SYSTEM PROFILE // ONLINE
+    </div>
+
+    <h1>
+        ExPostFacto
+    </h1>
+
+    <div class="hero-subtitle">
+        Information Security · Software Development · Security Research · Open Source
+        <span class="cursor"></span>
+    </div>
+
+    <div class="signature-line">
+        Lectori Salutem // Welcome, Operator.
+    </div>
+
+</div>
+
+</header><nav><div class="container nav-inner">
+
+    <div class="nav-logo">
+        profile
+    </div>
+
+    <ul class="nav-links">
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#interests">Interests</a>
+        </li>
+
+        <li>
+            <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+            <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+        <li>
+            <a href="#pgp">PGP</a>
+        </li>
+    </ul>
+
+</div>
+
+</nav><main><div class="container">
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                01
+            </span>
+
+            <h2>
+                Lectori Salutem
+            </h2>
+
+        </div>
+
+        <div class="panel">
+
+            <p>
+                This Github profile has been created with my
+                personal academic interests in mind.
+            </p>
+
+            <p>
+                I am open to collaborating on OSS Projects
+                and will be posting some of my own Open Source
+                Software as well.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTERESTS -->
+
+    <section id="interests">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                02
+            </span>
+
+            <h2>
+                Current Obsessions
+            </h2>
+
+        </div>
+
+        <div class="panel">
+
+            <p>
+                This list is subject to change, but I am
+                currently obsessively interested in,
+                including but not limited to:
+            </p>
+
+            <ol>
+
+                <li>
+                    <strong>
+                        Security Automation
+                    </strong>
+                    — Red &amp; Blue Team operations.
+                </li>
+
+                <li>
+                    Creating a personalized suite of
+                    TTPs for security research purposes.
+                </li>
+
+                <li>
+                    <strong>
+                        Malware — full stack.
+                    </strong>
+                    From reverse engineering to development
+                    of implants, payloads, exploits,
+                    persistence mechanisms, C2 infrastructure,
+                    and more, with a focus on *Nix-derived
+                    operating systems and Windows.
+                </li>
+
+                <li>
+                    Custom OS creation and deployment.
+                </li>
+
+                <li>
+                    Building a highly secured network using
+                    containerization and virtualization.
+                    E.g. using ProxMox to deploy my own
+                    enterprise-level architecture —
+                    think small datacenter — with logging,
+                    honeypots, hardened endpoints and much more.
+                </li>
+
+            </ol>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                03
+            </span>
+
+            <h2>
+                Quick Skills Overview
+            </h2>
+
+        </div>
+
+        <div class="panel">
+
+            <p>
+                A quick overview of my skills.
+                Note: when I write "Red Team" I mean it
+                in the broadest sense of the term.
+            </p>
+
+
+            <div class="skill-group">
+
+                <div class="skill-title">
+                    Development
+                </div>
+
+                <ul class="skill-list">
+
+                    <li>ASM</li>
+                    <li>C</li>
+                    <li>Python</li>
+                    <li>NodeJS</li>
+                    <li>Electron</li>
+                    <li>NSIS</li>
+                    <li>PowerShell</li>
+                    <li>Bash</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="skill-group">
+
+                <div class="skill-title">
+                    InfoSec
+                </div>
+
+                <ul class="skill-list">
+
+                    <li>OPSEC</li>
+                    <li>OSINT</li>
+                    <li>SOCMINT</li>
+                    <li>Red Team</li>
+                    <li>Blue Team</li>
+                    <li>Vulnerability Research</li>
+                    <li>Malware Research</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="skill-group">
+
+                <div class="skill-title">
+                    Research
+                </div>
+
+                <ul class="skill-list">
+
+                    <li>DevSecOps</li>
+                    <li>RF-SDR</li>
+                    <li>Radio Technologies</li>
+                    <li>Satellite Security</li>
+                    <li>Broad-spectrum RF Security</li>
+
+                </ul>
+
+            </div>
+
+            <p>
+                I have some experience in DevSecOps and
+                minimal experience in RF-SDR, but it is a
+                field I am currently learning along with
+                radio technologies for communication
+                purposes, satellite security, and general
+                broad-spectrum RF security.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                04
+            </span>
+
+            <h2>
+                Currently Working On
+            </h2>
+
+        </div>
+
+        <div class="panel">
+
+            <ul class="projects">
+
+                <li>
+                    Highly secure file transfer system.
+                </li>
+
+                <li>
+                    Suite of custom security tooling.
+                </li>
+
+                <li>
+                    Custom Debian-based Operating System.
+                </li>
+
+                <li>
+                    RF-SDR Toolkit for 4G LTE and 5G research.
+                </li>
+
+                <li>
+                    Local LLM setup using LM Studio.
+                </li>
+
+                <li>
+                    Custom microcontrollers for various purposes.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                05
+            </span>
+
+            <h2>
+                Contact
+            </h2>
+
+        </div>
+
+        <div class="panel">
+
+            <div class="contact">
+
+                <div>
+
+                    <p>
+                        If for some reason you would like
+                        to get in touch with me:
+                    </p>
+
+                    <a
+                        class="email"
+                        href="mailto:expostfacto@linuxmail.org"
+                    >
+                        expostfacto@linuxmail.org
+                    </a>
+
+                </div>
+
+                <div class="warning">
+                    Business inquiries welcome.<br>
+                    No, I am not going to write you malware.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SIGNATURE -->
+
+    <section>
+
+        <div class="section-header">
+
+            <span class="section-number">
+                06
+            </span>
+
+            <h2>
+                Signature
+            </h2>
+
+        </div>
+
+        <div class="panel">
+
+            <p>
+                Signed
+            </p>
+
+<pre class="ascii">┏┓┏┓
+ ┃┃ ━━┏┓┏┓┏╋
+┗┛┗┛  ┣┛┗┛┛┗
+      ┛   ┏
+          ╋┏┓┏╋┏┓
+          ┛┗┻┗┗┗┛</pre>        </div>
+
+    </section>
+
+
+    <!-- PGP -->
+
+    <section id="pgp">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                07
+            </span>
+
+            <h2>
+                Public Key Infrastructure
+            </h2>
+
+        </div>
+
+        <div class="panel">
+
+            <p>
+                My public OpenPGP key is available below.
+                Use it to verify signatures or encrypt
+                communications intended for me.
+            </p>
+
+            <div class="pgp-container">
+
+                <button
+                    class="pgp-button"
+                    id="pgpToggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="pgpKey"
+                >
+
+                    <span>
+                        SHOW PUBLIC PGP KEY
+                    </span>
+
+                    <span
+                        class="pgp-arrow"
+                        aria-hidden="true"
+                    >
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="pgp-key"
+                    id="pgpKey"
+                    aria-hidden="true"
+                >
+
+<pre><code>-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQINBGp2Wi0BEADiu86qTEcugcQS5gB414MZaQXlTk4jJolBPHEpSXBa69oh23aP
+zcMcYxzuB99YD0jezCPd0mn9olia6LCbosxNvrwLVG37axKdjSfY9c3uElfBPO30
+2r1r4qmErb0lqWJZhx48Tlezj1BveTcaJqUPCfegVWRG5LoVelqYamYIdMbdqHXI
+mW7QU0iVSmoCnXhjvm63jBQ9z7qXRjFXNpQaaap0yqJzDFLrQDcw9f6cFp3vVnz/
+fTppmP6ayiZaJTDlR/US2RdSB/kBShYend9NdSVoMbK4pmx+DjIoQ8nBqCM1z4Dp
+kd8pTHKMKn+qEMYjzVUDaPRCgJdl992vPdll8R1xxF8xWpMKDwYKCurq9UWveYaU
+IKQJOb32FW0v1adiiY3weMSk7VALWsaCsESUKJOf+9KtA5o8AwrTGZ9Tnvnk4o5q
+sTaDeC9EKKWcGpyXaf+uObtFoKI7EannzpvWovWIPNP5CTcI3TOpmdGy4WACoHwA
+WyJbvNmrsrBSSecpKXqWuA5A9ejjJ37z6N6yEyVpB0dBfy4lMp5GGoqdxdthWekG
+zs10R3SchWvSHrMcKR2mgrFrNrEURMuLMbZkdaTIFSf9Qg4pW7SKFwhfAZOKji9m
+f7RIi1Nwqxl0ujmXCRUkrITTv5t3A79A130emeH8UuUdxIwhPKZ0oFCmJwARAQAB
+tCdFeFBvc3RGYWN0byA8RXhQb3N0RmFjdG9AbGludXhtYWlsLmNvbT6JAlQEEwEK
+AD4WIQSRItIo7xzsVG8TX7zinufEqW4aXgUCanZaLQIbAwUJAeEzgAULCQgHAgYV
+CgkICwIEFgIDAQIeAQIXgAAKCRDinufEqW4aXhK6D/9DQXir1GnkPl0EwquB7XHL
+LD78b886ndsusdib12+DDJeNK3fo9Sc+WEtikswt+6IDhtlpz6QSlm89R5AWLPAM
+obBg59fqIliHZgdOT/bDfacRse0EzF26bMdCdRrmCh/8KIc/FIiZrK0m7lNO9Lfz
+CPPVlwS4uXTDwDKljY5UVx21cxEJ0gqU4bKLsmZqyHceTP7yrCEYTcHO246XfxIA
+UJ+BSnIcAtQjDRI2/zGz2UnbvNe9LTt4P9dnBXbc1W6aCwQiV6u9bAwITNnkmUGw
+lDicV5EdLnf/DXduQq938IIigPA1G8o+u1jw7sWvqJosC3oTVit9HR60EK6mv7pT
+n6gJu9z4EwYoEiLTGUuBi8V86miDq5cZnX4NnCU4+j6OLaB8vZ47wAI5Zgf3zHy8
+At8gELhG3AGKXvQOuYdOOZfH7eWJbxHkcTQGw7loRJ4X6fpkrCxsIAUyssZ2zdi
+eh1CuE12p8Hw9EoRGPra6rdGNasb05FBwNEAhO8RlpqabnEaNFunhpqrdEPHgwux
+rip5CBTkiDRiBQxdX4d3EUFHrIvrCUK/ll9H3gyaQOFOUiObFECeWHNnYmTbxs+C
+yhj85Y0jD/iJFCkJ/QV4zV4tamz8z1w51QeiL0KO1IlUkXa91ofQL++MbmCeIO0ysd
+BvTE1weLlfPRHgl4x0rWAw==
+=M1aN
+-----END PGP PUBLIC KEY BLOCK-----</code></pre>                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</main><footer><div class="container">
+
+    <span>EXPOSTFACTO</span>
+    //
+    STATIC PROFILE
+    //
+    GITHUB PAGES
+
+</div>
+
+</footer><script>
+
+    const pgpToggle =
+        document.getElementById("pgpToggle");
+
+    const pgpKey =
+        document.getElementById("pgpKey");
+
+
+    pgpToggle.addEventListener("click", () => {
+
+        const isOpen =
+            pgpKey.classList.toggle("open");
+
+        pgpToggle.classList.toggle(
+            "active",
+            isOpen
+        );
+
+        pgpToggle.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+        pgpKey.setAttribute(
+            "aria-hidden",
+            !isOpen
+        );
+
+    });
+
+
+</script></body>
+</html>
