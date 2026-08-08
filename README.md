@@ -35,8 +35,7 @@ Some experience in DevSecOps, minimal experience in RF-SDR but it's a field I am
 I am also looking into getting a set up where i can run LM Studio in order to play with some LLM's locally.  
   
 Lastly I am looking into building some custom microcontrollers for various purposes.  
-  
-___________  
+
 
 ### Contact
 
@@ -46,18 +45,6 @@ If for some reason you would like to get in touch with me:
 
 Business inquires welcome, and no I am not going to write you a malware.
 
----
-
-Signed  
-
-```
-┏┓┏┓
- ┃┃ ━━┏┓┏┓┏╋
-┗┛┗┛  ┣┛┗┛┛┗
-      ┛   ┏
-          ╋┏┓┏╋┏┓
-          ┛┗┻┗┗┗┛
-```
 
 <details>
 <summary><strong>🔐 Show Public PGP Key</strong></summary>
@@ -97,3 +84,18 @@ BvTE1weLlfPRHgl4x0rWAw==
 
 ```
 </br>
+
+
+---
+
+Signed  
+
+```
+┏┓┏┓
+ ┃┃ ━━┏┓┏┓┏╋
+┗┛┗┛  ┣┛┗┛┛┗
+      ┛   ┏
+          ╋┏┓┏╋┏┓
+          ┛┗┻┗┗┗┛
+```
+
