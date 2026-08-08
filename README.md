@@ -2,8 +2,8 @@
 
 <pre>
 ╔══════════════════════════════════════╗
-║        EXPOSTFACTO // PROFILE        ║
-║             SYSTEM ONLINE            ║
+║        EXPOSTFACTO // PROFILE             ║
+║            PROFILE ONLINE                 ║
 ╚══════════════════════════════════════╝
 </pre>
 
