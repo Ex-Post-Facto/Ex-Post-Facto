@@ -12,7 +12,7 @@
 
 </div>
 
-## Lectori Salutem  
+## Lectori Salutem 
 
 For the full experience click [_here_]('https://ex-post-facto.github.io/Ex-Post-Facto/')
 
