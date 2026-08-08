@@ -1,16 +1,21 @@
 <div align="center">
 
 <pre>
-╔══════════════════════════════════════╗
-║        EXPOSTFACTO // PROFILE             ║
-║            PROFILE ONLINE                 ║
-╚══════════════════════════════════════╝
+╔═══════════════════════════════╗
+║  .      EXPOSTFACTO // PROFILE     --------   .  |
+║    .        .   ABOUT ME          .    ------    |    
+| .      ---- ┏┓┏┓             .           ----  |
+|     -----     ┃┃ ━━┏┓┏┓┏╋        .         |
+|  -----    . ┗┛┗┛   ┣┛┗┛┛┗  .         .     |
+╚═══════════════════════════════╝
 </pre>
 
 </div>
 
 ## Lectori Salutem  
-  
+
+For the full experience click [_here_]('https://ex-post-facto.github.io/Ex-Post-Facto/')
+
 This Github profile has been created with my personal academic interests in mind. I am open to collaborating on OSS Projects and will be posting some of my own Open Source Software as well.  
   
 ### What am I obsessed with currently?  
@@ -105,7 +110,7 @@ Signed
  ┃┃ ━━┏┓┏┓┏╋
 ┗┛┗┛  ┣┛┗┛┛┗
       ┛   ┏
-          ╋┏┓┏╋┏┓
+          ╋┓┏╋┏┓
           ┛┗┻┗┗┗┛
-```
+```┏
 
