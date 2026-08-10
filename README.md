@@ -94,19 +94,16 @@ BvTE1weLlfPRHgl4x0rWAw==
 -----END PGP PUBLIC KEY BLOCK-----
 
 ```
-</br>
-
 
 ---
 
-Signed  
+##### Signed  
 
-```
+```text
 ┏┓┏┓
  ┃┃ ━━┏┓┏┓┏╋
-┗┛┗┛  ┣┛┗┛┛┗
-      ┛   ┏
+┗┛┗┛  ┣┛┗┛┛┗┛
+          ┏
           ╋┓┏╋┏┓
           ┛┗┻┗┗┗┛
-```┏
-
+```
